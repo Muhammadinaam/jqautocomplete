@@ -19,31 +19,32 @@
   <div class="row">
 
     <div class="col-md-6">
-        <div class="lookup">
+        <div class="lookup" data-id="1" data-display="Red Shirt">
         </div>
     </div>
 
     <div class="col-md-6">
-        <div class="lookup">
+        <div class="lookup"  data-id="" data-display="">
         </div>
     </div>
 
   </div>
 </div>
 
-<script type="text/javascript" src="{{asset('js/iautocomplete.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/ilookup.js')}}"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){
         $('.lookup').iLookup({
+            input_name: 'products[]',
             url: "{{url('product_search')}}",
             id: 'id',
             display: 'name',
             columns: [
-                ['id', 'ID', true],
-                ['name', 'Name', true],
-                ['image', 'Image', false],
-                ['price', 'Price', true],
+              {col_name: 'id', col_alias: 'ID', is_searchable: true, is_image: false},
+              {col_name: 'name', col_alias: 'Name', is_searchable: true, is_image: false},
+              {col_name: 'image', col_alias: 'Image', is_searchable: false, is_image: true},
+              {col_name: 'price', col_alias: 'Price', is_searchable: true, is_image: false},
             ],
         });
     });
