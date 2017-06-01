@@ -40,12 +40,20 @@
             url: "{{url('product_search')}}",
             id: 'id',
             display: 'name',
+            search_btn: 'S',
+            one_field_search: false,
             columns: [
-              {col_name: 'id', col_alias: 'ID', is_searchable: true, is_image: false},
-              {col_name: 'name', col_alias: 'Name', is_searchable: true, is_image: false},
-              {col_name: 'image', col_alias: 'Image', is_searchable: false, is_image: true},
-              {col_name: 'price', col_alias: 'Price', is_searchable: true, is_image: false},
+              {col_name: 'id', col_alias: 'ID', is_searchable: true, modifier: null},
+              {col_name: 'name', col_alias: 'Name', is_searchable: true, modifier: null},
+              {col_name: 'image', col_alias: 'Image', is_searchable: false, modifier: function(item){
+                item = '<img src="'+item+'">';
+                return item;
+              }},
+              {col_name: 'price', col_alias: 'Price', is_searchable: true, modifier: null},
             ],
+            on_select: function(obj){
+                console.log(obj);
+            },
         });
     });
 </script>
