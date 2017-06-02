@@ -156,7 +156,9 @@
       
       function get_ajax_response(ajax_url)
       {
-        modal.find('.please-wait').fadeIn('slow');
+        modal.find('.please-wait').show();
+
+        search_btn.attr('disabled', true);
 
         result_table.find('tbody').empty();
 
@@ -200,6 +202,8 @@
 
           });
 
+          
+
           if(data.next_page_url != null)
           {
             next_button.show();
@@ -224,8 +228,11 @@
         });
 
         request.always(function(){
-          modal.find('.please-wait').hide();          
+          search_btn.attr('disabled', false);
+          modal.find('.please-wait').fadeOut();
         });
+
+        
       }
 
 
