@@ -229,7 +229,7 @@
 
         request.always(function(){
           search_btn.attr('disabled', false);
-          modal.find('.please-wait').fadeOut();
+          modal.find('.please-wait').hide();
         });
 
         
